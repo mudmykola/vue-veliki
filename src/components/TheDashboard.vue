@@ -102,7 +102,56 @@
                             <strong>COMPARE :</strong>
                         </v-toolbar-title>
                         <v-spacer></v-spacer>
+                        <v-badge class="mr-2" color="#FF7400" content="3"></v-badge>
                     </v-toolbar>
+                </v-col>
+                <v-col class="py-0 pr-0 mt-3 " cols="3">
+                    <v-card flat outlined tile>
+                        <v-toolbar flat>
+                            <v-icon class="mr-2" color="#150873">mdi-chevron-down</v-icon>
+                            <strong class="text-uppercase">Category </strong>
+                            <v-spacer></v-spacer>
+                            <v-icon color="#02b38C" small>mdi-close</v-icon>
+                        </v-toolbar>
+                        <v-list class="mt-n5" dense>
+                            <v-list-item v-for="product in products" :key="product.title">
+                                <v-list-item-content>
+                                    <v-list-item-title class="ml-8" v-text="product.title"></v-list-item-title>
+                                </v-list-item-content>
+                                <v-list-item-action>
+                                    <v-list-item-subtitle v-text="product.count"></v-list-item-subtitle>
+                                </v-list-item-action>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
+                    <v-card flat outlined tile>
+                        <v-toolbar flat>
+                            <v-icon class="mr-2" color="#150873">mdi-chevron-down</v-icon>
+                            <strong>PRICE</strong>
+                            <v-spacer></v-spacer>
+                            <v-icon color="#02b38C" small>mdi-close</v-icon>
+                        </v-toolbar>
+                        <v-toolbar flat>
+                            <v-text-field class="mx-2" placeholder="$100" filld rounded dense></v-text-field>
+                            <v-text-field class="mx-2" placeholder="$4999.99" filld rounded dense></v-text-field>
+                        </v-toolbar>
+                        <v-range-slider color="#150873" max="50" min="-40"></v-range-slider>
+                    </v-card>
+                    <v-card flat outlined tile>
+                        <v-toolbar flat>
+                            <v-icon class="mr-2" color="#150873">mdi-chevron-down</v-icon>
+                            <strong class=" text-uppercase">BRAKE TYPE</strong>
+                            <v-spacer></v-spacer>
+                            <v-icon color="#02b38C" small>mdi-close</v-icon>
+                        </v-toolbar>
+                        <v-list class="mt-n5" dense>
+                            <v-list-item v-for="btype in btypes" :key="btype.title">
+                                <v-list-item-content>
+                                    <v-list-item-title class="ml-6" v-text="btype.title"></v-list-item-title>
+                                </v-list-item-content>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
                 </v-col>
             </v-row>
         </v-card>
@@ -133,6 +182,56 @@ export default {
                 disabled: false,
                 href: 'breadcrumbs_kids',
             },
+
+        ],
+        products: [
+            {
+                title: 'Mens`s bikes',
+                count: '25',
+            },
+            {
+                title: 'Women`s bikes',
+                count: '5',
+            },
+            {
+                title: 'Mountaine bikes',
+                count: '52',
+            },
+            {
+                title: 'Road bikes',
+                count: '8',
+            },
+            {
+                title: 'Hybrid bikes',
+                count: '14',
+            },
+            {
+                title: 'Electric bikes',
+                count: '10',
+            },
+        ],
+          btypes: [
+            {
+                title: 'Hydraulic disc',
+                sta:true,
+            },
+             {
+                title: 'Mechanical disc',
+                sta:false,
+            },
+             {
+                title: 'Linear pull',
+                sta:true,
+            },
+             {
+                title: 'Coaster',
+                sta:true,
+            },
+             {
+                title: 'Caliper',
+                sta:false,
+            },
+          
         ],
     })
 }
