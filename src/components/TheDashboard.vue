@@ -149,18 +149,98 @@
                                 <v-list-item-content>
                                     <v-list-item-title class="ml-6" v-text="btype.title"></v-list-item-title>
                                 </v-list-item-content>
+                                <v-list-item-action>
+                                    <v-checkbox color="primary" v-model="btype.sta"></v-checkbox>
+                                </v-list-item-action>
                             </v-list-item>
                         </v-list>
                     </v-card>
+                    <v-card flat outlined tile>
+                        <v-toolbar flat>
+                            <v-icon class="mr-2" color="#150873">mdi-chevron-down</v-icon>
+                            <strong class=" text-uppercase">Wheel diameter</strong>
+                            <v-spacer></v-spacer>
+                            <v-icon color="#02b38C" small>mdi-close</v-icon>
+                        </v-toolbar>
+                        <v-chip-group class="ml-2" column multiple active-class="orange white--text">
+                            <v-chip class="size" v-for="size in sized" :key="size" :value="size">
+                                {{ size }}
+                            </v-chip>
+                        </v-chip-group>
+                    </v-card>
+                </v-col>
+                <v-col class="mt-n3" cols="9">
+                    <v-row>
+                        <v-col cols="12" sm="4" v-for="(bike, i) in biked" :key="i" :class="bike.class">
+                            <v-hover v-slot:default="{ hover }">
+                                <v-card height="300" align="center" flat outlined tile>
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn color="#150873" small dark>{{ bike.solid }}</v-btn>
+                                    </v-card-actions>
+                                    <v-img :src=bike.image width="200" height="200" contain></v-img>
+                                    <v-card-text class="mt-n4">
+                                        <strong :class="hover ? 'orange--text dark' : 'black--text'">{{ bike.title
+                                        }}</strong>
+                                    </v-card-text>
+                                    <v-expand-transition>
+                                        <div v-if="hover"
+                                            class="d-flex transition-fast-in-fast-out orange v-card--reveal display-3 white--text"
+                                            style="height: 100%; ">
+                                            <v-btn rounded color="white">
+                                                <v-icon>mdi-cart-outlined</v-icon>
+                                                Buy
+                                            </v-btn>
+                                            <v-btn class="ml-2" fab small color="white">
+                                                <v-icon color="#02b38C">mdi-content-copy</v-icon>
+                                            </v-btn>
+                                            <v-btn class="ml-2" fab small color="white">
+                                                <v-icon color="#02b38C">mdi-heart-outline</v-icon>
+                                            </v-btn>
+
+                                        </div>
+                                    </v-expand-transition>
+                                </v-card>
+                            </v-hover>
+                        </v-col>
+                    </v-row>
+                </v-col>
+                <v-col class="mt-n3 pr-0 pb-0" cols="12" sm="3">
+                    <v-toolbar flat outlined>
+
+                    </v-toolbar>
+                </v-col>
+                <v-col class="mt-n3 px-0 pb-0" cols="12" sm="3">
+                    <v-toolbar flat outlined>
+                        <v-btn class="mr-1" icon>
+                            <v-icon color="#150873">mdi-chevron-up</v-icon>
+                        </v-btn>
+                        <v-divider vertical></v-divider>
+                    </v-toolbar>
+                </v-col>
+                <v-col class="mt-n3 px-0 pb-0" cols="12" sm="3" >
+                    <v-toolbar class="text-center" flat outlined >
+                        <v-pagination :length="4" v-model="page"></v-pagination>
+                    </v-toolbar>
+                </v-col>
+                <v-col class="mt-n3 pl-0 pb-0" cols="12" sm="3">
+                    <v-toolbar flat outlined>
+                        <v-btn class="mr-1" icon>
+                            <v-icon color="#150873">mdi-chevron-down</v-icon>
+                        </v-btn>
+                        <v-divider vertical></v-divider>
+                    </v-toolbar>
                 </v-col>
             </v-row>
         </v-card>
+        
     </v-container>
 </template>
 
 <script>
 export default {
     data: () => ({
+        page:1,
         items: [
             {
                 text: 'Home',
@@ -210,29 +290,104 @@ export default {
                 count: '10',
             },
         ],
-          btypes: [
+        btypes: [
             {
                 title: 'Hydraulic disc',
-                sta:true,
+                sta: true,
             },
-             {
+            {
                 title: 'Mechanical disc',
-                sta:false,
+                sta: false,
             },
-             {
+            {
                 title: 'Linear pull',
-                sta:true,
+                sta: true,
             },
-             {
+            {
                 title: 'Coaster',
-                sta:true,
+                sta: true,
             },
-             {
+            {
                 title: 'Caliper',
-                sta:false,
+                sta: false,
             },
-          
         ],
+        sized: [
+            '9"', '12"', '14"', '16"', '18"', '20"', '20"+', '22"', '24"', '24"+',
+        ],
+        biked: [
+            {
+                class: 'pa-0',
+                solid: '-10%',
+                image: 'cart-1.png',
+                title: 'Orbea MX 50',
+                price: '$ 2000.00',
+            },
+            {
+                class: 'pa-0',
+                solid: '-30%',
+                image: 'cart-1.png',
+                title: 'Cannondale Trail SE 4',
+                price: '$ 209.08',
+            },
+            {
+                class: 'pa-0',
+                solid: '-1%',
+                image: 'cart-1.png',
+                title: ' MaxxPro M300',
+                price: '$ 6987.00',
+            },
+            {
+                class: 'pa-0',
+                solid: '-32%',
+                image: 'cart-1.png',
+                title: 'Cyclone AX 29',
+                price: '$ 800.33',
+            },
+            {
+                class: 'pa-0',
+                solid: '-10%',
+                image: 'cart-1.png',
+                title: 'Reid Rapid Drop Bar',
+                price: '$ 2540.00',
+            },
+            {
+                class: 'py-0 pl-0',
+                solid: '-40%',
+                image: 'cart-1.png',
+                title: 'VNC RockRider A5 29',
+                price: '$ 19800.00',
+            },
+            {
+                class: 'pa-0',
+                solid: '-80%',
+                image: 'cart-1.png',
+                title: 'Spirit Echo 7.2',
+                price: '$ 5400.00',
+            },
+            {
+                class: 'pa-0',
+                solid: '-70%',
+                image: 'cart-1.png',
+                title: 'Reid MTB Pro Disc',
+                price: '$ 2000.00',
+            },
+            {
+                class: 'pa-0',
+                solid: '-22%',
+                image: 'cart-1.png',
+                title: 'Winner Solid DX',
+                price: '$ 6020.00',
+            },
+            {
+                class: 'pa-0',
+                solid: '-10%',
+                image: 'cart-1.png',
+                title: 'Polygon Heist X2',
+                price: '$ 2500.00',
+            },
+        ],
+
     })
 }
 </script>
@@ -259,7 +414,7 @@ export default {
     justify-content: center;
     opacity: .5;
     position: absolute;
-    widows: 100%;
+    width: 100%;
 }
 
 .card-first {
