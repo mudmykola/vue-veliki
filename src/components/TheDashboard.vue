@@ -6,7 +6,7 @@
                     <h3 class="text-center "> FAST FORWARD</h3>
                 </v-col>
                 <v-col cols="12" sm="12">
-                    <v-breadcrumbs class="justify-center mt-n7" dark :items="items">
+                    <v-breadcrumbs class="justify-center mt-n7"  dark :items="items">
                         <template v-slot:divider>
                             <v-icon color="#008500">mdi-chevron-right</v-icon>
                         </template>
@@ -14,7 +14,7 @@
                 </v-col>
             </v-row>
         </v-card>
-        <v-card class="mx-16 mt-n10 card1" color="white" tile>
+        <v-card class="mx-16 mt-n10 card-first" color="white" tile>
             <v-row>
                 <v-col class="pr-0" cols="12" sm="8">
                     <v-card height="250px" tile flat color="#00A67C">
@@ -178,7 +178,7 @@
                                         <v-spacer></v-spacer>
                                         <v-btn color="#150873" small dark>{{ bike.solid }}</v-btn>
                                     </v-card-actions>
-                                    <v-img :src=bike.image width="200" height="200" contain></v-img>
+                                    <v-img :src= "bike.image" width="200" height="200" contain></v-img>
                                     <v-card-text class="mt-n4">
                                         <strong :class="hover ? 'orange--text dark' : 'black--text'">{{ bike.title
                                         }}</strong>
@@ -233,7 +233,21 @@
                 </v-col>
             </v-row>
         </v-card>
-        
+        <v-card class="d-flex align-center justify-center mt-n10 card-second" color="#eff0f2" height="250px" tile flat dark >
+            <v-row>
+                <v-col cols="12" sm="12">
+                    <h4 class="text-center black--text mt-10 text-uppercase">Enduro mountain bikes</h4>
+                </v-col>
+                <v-col cols="12" sm="12">
+                    <h6 class="text-center grey--text"  >Enduro pushes the limits of mountain biking, combining the technical capability of downhill with the endurance of a trail ride. Trek enduro bikes are more than up to the challenge. We've packed everything we know about racing efficiency, suspension, and durability into one blisteringly fast and capable package. </h6>
+                </v-col>
+                <v-col cols="12" sm="12">
+                    <v-card class="d-flex justify-center" flat color="transparent">
+                        <v-text-field class="shrink" background-color="grey" filled append-icon="mdi-email-outline"  dense placeholder="Enter your Email Adress" rounded></v-text-field>
+                    </v-card>
+                </v-col>
+            </v-row>
+        </v-card>
     </v-container>
 </template>
 
@@ -418,10 +432,10 @@ export default {
 }
 
 .card-first {
-    z-index: 10;
+    z-index: 9999;
 }
 
 .card-second {
-    z-index: 1;
+    z-index: 99;
 }
 </style>
